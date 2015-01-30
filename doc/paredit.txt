@@ -22,7 +22,7 @@ added or deleted, they are entered or removed in pairs.
 The function takes care of strings and comments, so no parenthesis and square
 bracket balancing is performed inside a string or comment.
 Please note that [] and {} pairs are not balanced for Lisp filetypes, only
-for Clojure and Scheme.
+for Clojure and Scheme by default.
 
 The idea is taken from the paredit mode of Emacs, but not all paredit.el
 editing functions are implemented or behave exactly the same way as they do
@@ -378,6 +378,9 @@ PAREDIT OPTIONS                                               *paredit-options*
 
 |g:paredit_electric_return|  If nonzero, electric return feature is enabled.
 
+|g:paredit_full_balancing|   If nonzero, [] and {} are also balanced,
+                             regardless of the language.
+
 |g:paredit_smartjump|        If nonzero, '(' and ')' also target square brackets
                              and curly braces when editing Clojure or Scheme.
 
@@ -413,6 +416,11 @@ to send the command line to the swank server for evaluation.
 
 Please find a video demonstration of the electric return feature here:
 http://img8.imageshack.us/img8/9479/openparen.gif
+
+                                                     *g:paredit_full_balancing*
+If nonzero, this option changes the default behavior of only balancing
+'(' and ')' when the language is Clojure or Scheme. Therefore, in this option
+'[', ']', '{', and '}' are also balanced regardless of the language.
 
                                                           *g:paredit_smartjump*
 If nonzero, this option changes the behavior of '(' and ')' in normal and visual
