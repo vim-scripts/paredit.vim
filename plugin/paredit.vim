@@ -155,7 +155,7 @@ function! PareditInitBuffer()
         execute 'nmap     <buffer> <silent> ' . g:paredit_leader.'<Up>    d[(,S'
         execute 'nmap     <buffer> <silent> ' . g:paredit_leader.'<Down>  d])%,S'
         call RepeatableNNoRemap(g:paredit_leader . 'I', ':<C-U>call PareditRaise()')
-        if &ft =~ '.*\(clojure\|scheme\|racket\).*'
+        if &ft =~ '.*\(clojure\|scheme\|racket\).*' || g:paredit_full_balancing
             inoremap <buffer> <expr>   [            PareditInsertOpening('[',']')
             inoremap <buffer> <silent> ]            <C-R>=(pumvisible() ? "\<lt>C-Y>" : "")<CR><C-O>:let save_ve=&ve<CR><C-O>:set ve=all<CR><C-O>:<C-U>call PareditInsertClosing('[',']')<CR><C-O>:let &ve=save_ve<CR>
             inoremap <buffer> <expr>   {            PareditInsertOpening('{','}')
