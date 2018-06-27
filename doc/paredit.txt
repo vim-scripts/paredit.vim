@@ -1,7 +1,7 @@
-*paredit.txt*                   Paredit              Last Change: 29 Dec 2013
+*paredit.txt*                   Paredit              Last Change: 13 Dec 2016
 
 Paredit Mode for Vim                                  *paredit* *slimv-paredit*
-                               Version 0.9.12
+                               Version 0.9.13
 
 The paredit.vim plugin performs structured editing of s-expressions used in
 the Lisp, Clojure, Scheme programming languages. It may come as part of Slimv
@@ -150,7 +150,7 @@ Insert Mode:
                    electric returns when appropriate.
 
     "              When outside of string, inserts '""' and moves the cursor
-                   inside. When inside string then moves to the closing '"'.                   
+                   inside. When inside string then moves to the closing '"'.
                    Inserts '"' when inside comment. Also insert '"' when inside
                    string and preceded by a '\'.
 
@@ -167,7 +167,7 @@ Insert Mode:
     <Enter>        If |g:paredit_electric_return| is on then insert an
                    "electric return", i.e. create an empty line by inserting
                    two newline characters.
-                   
+
 
 Normal Mode:
 
@@ -261,7 +261,7 @@ Normal Mode:
 
     <Leader>I      Raise the current symbol, i.e. replace the current list with
                    the current symbol by deleting everything else (except the
-                   symbol) in the list, including the eclosing pair of parens.
+                   symbol) in the list, including the enclosing pair of parens.
                    For example pressing <Leader>I at position marked with |:
                        (aaa (b|bb ccc) ddd)  --->    (aaa |bbb ddd)
 
@@ -367,14 +367,21 @@ available even when paredit mode is switched off.
     di(            Same as da( but does not delete the enclosing parens.
 
 
+Davide Taviani made a cheetsheet for Paredit, which can be accessed here:
+https://github.com/StudyFlow/paredit.vim-cheatsheet
+
 ===============================================================================
 PAREDIT OPTIONS                                               *paredit-options*
 
 |g:paredit_disable_clojure|  If defined, paredit is disabled for clojure files.
 
+|g:paredit_disable_hy|       If defined, paredit is disabled for hy files.
+
 |g:paredit_disable_lisp|     If defined, paredit is disabled for lisp files.
 
 |g:paredit_disable_scheme|   If defined, paredit is disabled for scheme files.
+
+|g:paredit_disable_shen|     If defined, paredit is disabled for shen files.
 
 |g:paredit_electric_return|  If nonzero, electric return feature is enabled.
 
@@ -395,6 +402,7 @@ PAREDIT OPTIONS                                               *paredit-options*
                                                     *g:paredit_disable_clojure*
                                                        *g:paredit_disable_lisp*
                                                      *g:paredit_disable_scheme*
+                                                       *g:paredit_disable_shen*
 If defined then paredit is disabled for the given file type. Useful to use
 a different plugin for a specific file type, but keep using paredit for the
 others.
